@@ -64,6 +64,9 @@ Setelah itu pada urls.py di direktori proyek tambahkan path('main/',include('mai
 
 - buat README.md pada direktori utama dengan text editor
 
+Bagan request client ke web aplikasi Django
+![Django app graph](https://github.com/RyanAfzal/inventory_manager/assets/137851158/a38643d8-6f4c-4611-ab10-6aa3b995a953)
+
 Alasan menggunakan virtual environment
 
 • Virtual environment memungkinkan kita mengisolasi dependensi proyek. Ini berarti setiap proyek dapat memiliki versi Python dan paket dependensi yang berbeda, tanpa konflik dengan proyek lain.
