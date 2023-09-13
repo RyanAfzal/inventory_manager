@@ -74,7 +74,7 @@ Bagan request client ke web aplikasi Django
 
 Tanpa virtual environment kita tetap bisa membuat aplikasi web berbasis django, tetapi ketika terjadi penggunaan versi python yang berbeda dari tiap aplikasi pada proyek dapat menyebabkan konflik sehingga aplikasi tidak dapat berjalan.
 
-# MVC, MVP, dan MVVM
+# MVC, MVT, dan MVVM
 
 1.	Model-View-Controller atau MVC adalah sebuah metode untuk membuat sebuah aplikasi dengan memisahkan data (Model) dari tampilan (View) dan cara bagaimana memprosesnya (Controller).
 
@@ -100,32 +100,14 @@ Tanpa virtual environment kita tetap bisa membuat aplikasi web berbasis django, 
 
 •	Controller kode yang besar yang membuat pengembang tidak bisa mengelolahnya.
 
+ciri : menerima input dari user dan memanipulasi Model/View sesuai kebutuhan
 
 
-2.	MVP (Model-View-Presenter) adalah pola desain yang memberikan pendekatan terstruktur untuk membangun aplikasi perangkat lunak, khususnya dalam konteks pengembangan backend, logika presentasi.
+2.	MVT (Model-View-Template) adalah pola desain untuk aplikasi berbasis web yang merupakan struktur turunan dari MVC.
 
+Model membantu untuk mengatur database, template untuk mengatur interface, view berguna untuk menjalankan logika bisnis dan berinteraksi dengan model untuk membawa data dan render template.
 
-
-	Kelebihan :
-
-•	Dapat memberikan kemudahan terhadap penukaran tampilan.
-
-•	View dan Presenter dapat digunakan kembali untuk pengembangan aplikasi.
-
-•	Kode yang lebih mudah untuk dibaca dan dipelihara.
-
-•	Kemudahan pengujian dikarenakan logika bisnis yang terpisah dari UI.
-
-
-
-	Kekurangan : 
-
-•	Ukuran kode yang terlalu besar.
-
-•	Banyaknya interface untuk berinteraksi antar lapisan yang terpisah.
-
-•	Memiliki hubungan yang erat antara View dan Presenter
-
+ciri : tidak ada pemisahan controller, karena template untuk interface maka template menentukan bagaimana data ditampilkan pada view
 
 
 3.	MVVM adalah salah satu arsitektur pembuatan aplikasi berbasis GUI yang berfokus pada pemisahan antara kode untuk logika bisnis dan tampilan aplikasi atau gabungan MVC dan MVP.
@@ -140,8 +122,11 @@ Tanpa virtual environment kita tetap bisa membuat aplikasi web berbasis django, 
 
 •	Pengujian unit yang mudah dan kode yang digerakkan oleh peristiwa (event-driven).
 
+
 	Kekurangan :
 
 •	Pengembang harus membuat suatu kuantitas yang dapat diukur di setiap komponen UI.
 
 •	Ukuran kode yang terlalu besar.
+
+Ciri : menjadi media antara Model dan View, menangani input user, dan menangani data yang akan ditampilkan
