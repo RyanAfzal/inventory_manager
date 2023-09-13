@@ -65,7 +65,7 @@ Setelah itu pada urls.py di direktori proyek tambahkan path('main/',include('mai
 - buat README.md pada direktori utama dengan text editor
 
 Bagan request client ke web aplikasi Django
-![Django graph](https://github.com/RyanAfzal/inventory_manager/assets/137851158/fe6cfeaf-c425-4e3a-a488-ca5476f1396d)
+![Django graph](https://github.com/RyanAfzal/inventory_manager/assets/137851158/f5db7f29-9c16-4943-b2f3-60622824822d)
 
 Alasan menggunakan virtual environment
 
