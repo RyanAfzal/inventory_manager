@@ -6,7 +6,7 @@ Kelas   : PBP A
 
 Links Adaptable : https://inventorymanager.adaptable.app/main
 
-Step-step memenuhi kriteria aplikasi
+# Step-step memenuhi kriteria aplikasi
 
 - Membuat proyek Django baru
 1. Memiliki repository pada github dan folder yang terhubung dengan repository pada github, kemudian buat virtual environment dari folder tersebut
@@ -67,14 +67,14 @@ Setelah itu pada urls.py di direktori proyek tambahkan path('main/',include('mai
 Bagan request client ke web aplikasi Django
 ![Django graph](https://github.com/RyanAfzal/inventory_manager/assets/137851158/f5db7f29-9c16-4943-b2f3-60622824822d)
 
-Alasan menggunakan virtual environment
+# Alasan menggunakan virtual environment
 
 • Virtual environment memungkinkan kita mengisolasi dependensi proyek. Ini berarti setiap proyek dapat memiliki versi Python dan paket dependensi yang berbeda, tanpa konflik dengan proyek lain.
 • Mengelola dependencies lebih baik
 
 Tanpa virtual environment kita tetap bisa membuat aplikasi web berbasis django, tetapi ketika terjadi penggunaan versi python yang berbeda dari tiap aplikasi pada proyek dapat menyebabkan konflik sehingga aplikasi tidak dapat berjalan.
 
-MVC, MVP, dan MVVM
+# MVC, MVP, dan MVVM
 
 1.	Model-View-Controller atau MVC adalah sebuah metode untuk membuat sebuah aplikasi dengan memisahkan data (Model) dari tampilan (View) dan cara bagaimana memprosesnya (Controller).
 
