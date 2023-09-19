@@ -6,6 +6,8 @@ Kelas   : PBP A
 
 Links Adaptable : https://inventorymanager.adaptable.app/main
 
+**PBP tugas 2**
+
 # Step-step memenuhi kriteria aplikasi
 
 - Membuat proyek Django baru
@@ -130,3 +132,42 @@ ciri : tidak ada pemisahan controller, karena template untuk interface maka temp
 •	Ukuran kode yang terlalu besar.
 
 Ciri : menjadi media antara Model dan View, menangani input user, dan menangani data yang akan ditampilkan
+
+**PBP tugas 3**
+
+# Perbedaan get dan post
+
+1. Data dengan get ditampilkan dalam url dan data dengan post sebagai request body (tidak terlihat)
+2. Post lebih aman daripada get
+3. Post digunakan untuk mengirim data contohnya untuk mengumpulkan form, sedangkan get digunakan untuk mengambil data, tetapi get juga bisa untuk transmit data misalnya untuk transmit data melalui link
+4. Get memiliki batasan string sepanjang 2047 karakter, sedangkan post tidak memiliki batasan
+
+# Perbedaan Json, Xml, dan HTML
+
+Json (JavaScript Object Notation)
+- Struktur : JSON menyimpan elemennya secara efisien akan tetapi tidak rapi untuk dilihat
+- Nama dari file JSON akan diakhiri dengan ekstensi .json
+- Penggunaan : JSON sering digunakan untuk pertukaran data antara aplikasi web dan server, serta untuk menyimpan konfigurasi dan pengaturan
+
+-Xml (eXtensible Markup Language)
+- Struktur : XML menyimpan elemen-elemen nya dengan cara yang terstruktur, mudah dibaca oleh manusia dan mesin, akan tetapi kurang efisien.
+- Nama dari file Xml diakhiri dengan ekstensi .xml
+- Penggunaan : XML sering digunakan untuk pertukaran data antara sistem yang berbeda atau untuk menyimpan data dalam format yang dapat diolah secara struktural. terutama dalam lingkungan bisnis dan web services.
+
+HTML (Hyper Text Markup Language)
+- Struktur : menggunakan mark atau tag untuk sebuah dokumen yang mengindikasikan struktur logis nya seperti paragraf dan secara semantik
+- Nama dari file HTML diakhiri dengan ekstensi .html
+- Penggunaan : HTML digunakan untuk membuat halaman web, menampilkan teks, gambar, tautan, dan elemen-elemen lainnya secara terstruktur.
+
+# Alasan JSON sering digunakan dalam pertukaran data antara aplikasi web modern
+1. Karena Json dapat menyimpan data secara efisien dan sintaks nya singkat
+2. Json memiliki kemampuan parsing 
+3. Untuk aplikasi AJAX Json lebih cepat daripada Xml
+4. Json memiliki kemiripan dengan JavaScript sehingga program JavaScript dapat dengan mudah mengubah data Json ke object native JavaScript
+5. ukuran file cenderung kecil
+6. Json didukung oleh banyak bahasa pemrograman seperti Python, PHP, C++, Ruby, dan Perl.
+7. Mendukung Internationalization: JSON mendukung encoding Unicode, yang memungkinkan untuk merepresentasikan teks dalam berbagai bahasa dan karakter khusus.
+8. Mendukung Tipe Data Umum: JSON mendukung tipe data umum seperti string, angka, objek, dan array. Ini memungkinkan untuk merepresentasikan berbagai jenis data dalam satu format.
+
+# Step-step tugas 3 
+
