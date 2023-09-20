@@ -171,3 +171,16 @@ HTML (Hyper Text Markup Language)
 
 # Step-step tugas 3 
 
+# Membuat input form
+1. Sebelum membuat form saya membuat templates html terlebih dahulu untuk kerangka umum halaman web lainnya setelah itu buat tampilan lainnya menggunakan template utama.Lalu buat form di forms.py pada direktori main untuk menerima data produk baru.
+2. Yang dibuat di forms.py import ke views.py yang ada pada main
+3. Kemudian buat fungsi create_product untuk menambahkan produk baru dan fungsi show_main untuk yang akan ditampilkan di web dan tidak lupa untuk menambahkannya di urls.py
+4. fungsi create_product juga dibuatkan html nya agar dapat diakses di web dengan tidak lupa membuat buttonnya
+
+# Membuat 5 fungsi views
+1. Pertama-tama pada views.py import HttpResponse yang berisi parameter data hasil query yang sudah diserialisasi dan serializers digunakan untuk translate objek model menjadi format lain
+2. Kemudian buat fungsi show_xml, show_json, show_xml_by_id, dan show_json_by_id
+
+# Membuat routing URL untuk masing-masing views
+1. Pada urls.py pada main import function untuk masing-masing views
+2. Tambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor 
