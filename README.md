@@ -184,3 +184,19 @@ HTML (Hyper Text Markup Language)
 # Membuat routing URL untuk masing-masing views
 1. Pada urls.py pada main import function untuk masing-masing views
 2. Tambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor 
+
+# Akses kelima url
+1. SS HTML
+<img width="641" alt="SS HTML" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/33d2392f-8f7a-43bf-b6f4-1998beecc54c">
+
+2. SS Xml
+<img width="642" alt="SS Xml" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/d6990df0-b36b-4191-a550-9ea7fbfb55c4">
+
+3. SS Json
+<img width="646" alt="SS Json" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/4c8c9f4c-e91a-4862-b6a8-0136ccc473d8">
+
+4. SS XML by ID
+<img width="638" alt="SS Xml id" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/78829c0b-4b07-41dc-baf5-959b98f6d216">
+
+5. SS Json by ID
+<img width="646" alt="SS Json ID" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/be8761d0-1a71-45f1-b7b8-53639f6ccd80">
