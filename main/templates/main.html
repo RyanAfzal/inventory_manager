@@ -9,7 +9,6 @@
     <p>{{ class }}<p> 
 
     <table>
-        <td>Total item yang dibeli : {{products|length}}</td>
         <tr>
             <th>Name</th>
             <th>Amount</th>
@@ -32,7 +31,14 @@
     <a href="{% url 'main:create_product' %}">
         <button>
             Add New Product
+            <a href="{% url 'main:logout' %}">
+                <button>
+                    Logout
+                </button>
+            </a>
         </button>
     </a>
     
+    <h5>Username: {{ request.user.username }}</h5>
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
