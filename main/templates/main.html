@@ -22,8 +22,27 @@
                 <td>{{product.name}}</td>
                 <td>{{product.amount}}</td>
                 <td>{{product.description}}</td>
+                <td>
+                    <form method="post" action="{% url 'main:add_stock' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Tambah</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'main:reduce_stock' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Kurang</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'main:delete_product' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Hapus</button>
+                    </form>
+                </td>
             </tr>
         {% endfor %}
+
     </table>
     
     <br />

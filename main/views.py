@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import get_object_or_404 #Untuk Spesifik ke 1 item/product
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -88,3 +89,27 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+@login_required(login_url='/login')
+def add_stock(request, id):
+    product = get_object_or_404(Product, id=id, user=request.user)
+    if request.method == 'POST':
+        product.amount += 1
+        product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+@login_required(login_url='/login')
+def reduce_stock(request, id):
+    product = get_object_or_404(Product, id=id, user=request.user)
+    if request.method == 'POST':
+        if product.amount > 0:
+            product.amount -= 1
+            product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+@login_required(login_url='/login')
+def delete_product(request, id):
+    product = get_object_or_404(Product, id=id, user=request.user)
+    if request.method == 'POST':
+        product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
