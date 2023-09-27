@@ -200,3 +200,88 @@ HTML (Hyper Text Markup Language)
 
 5. SS Json by ID
 <img width="646" alt="SS Json ID" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/be8761d0-1a71-45f1-b7b8-53639f6ccd80">
+
+
+**PBP tugas 4**
+
+# UserCreationForm
+UserCreationForm adalah impor formulir bawaan yang memudahkan pembuatan formulir pendaftaran pengguna dalam aplikasi web. 
+
+Kelebihan : 
+1. Dengan formulir ini, pengguna baru dapat mendaftar dengan mudah di situs web Anda tanpa harus menulis kode dari awal.
+2. Memiliki validasi built-in terkait hal yang biasa dibutuhkan pengguna, seperti memeriksa username unik, email yang valid, password yang kuat, dan lain-lain.
+3. Dapat disesuaikan dengan kebutuhan, walaupun memiliki beberapa tempat untuk atribut yang sudah diatur secara default, pengguna dapat menambahkan tempat untuk atribut-atribut yang belum ada atau menghapus tempat dari atribut yang tidak dibutuhkan.
+
+Kekurangan :
+1. Jika tempat untuk atribut dan tampilan default tidak sesuai dengan kebutuhan, pengguna harus menyesuaikan sendiri dengan kebutuhan.
+2. Tidak dapat memenuhi kebutuhan yang kompleks dari pengguna secara fungsi misalnya membutuhkan verifikasi email untuk login, maka lebih baik membuat form sendiri agar lebih sesuai dengan kebutuhan.
+
+# Autentikasi dan Otorisasi pada Django
+Perbedaannya :
+
+1. Dari pengertian autentikasi adalah proses yang memeriksa atau memverifikasi siapa pengguna (untuk mengetahui identitas), misalnya pada saat login. Sedangkan otorisasi adalah proses yang memeriksa apakah pengguna memiliki akses untuk melakukan atau menggunakan suatu fitur.
+2. Perbedaan waktu di mana autentikasi dilakukan terlebih dahulu setelah itu otorisasi.
+
+Pentingnya autentikasi dan otorisasi :
+1. Untuk keamanan, autentikasi dapat mencegah dari orang yang tidak dikenal mengakses aplikasi atau sistem yang kita miliki.
+2. Dapat melindungi data, karena autentikasi dapat memeriksa siapa saja yang berhak untuk masuk ke suatu sistem maka yang dapat mengakses data hanyalah orang-orang yang diizinkan saja sehingga data lebih aman.
+3. Otorisasi melindungi beberapa akses yang mungkin dapat disalahgunakan, merugikan, dan merusak jika diakses oleh sembarang orang termasuk yang diizinkan masuk ke dalam suatu sistem. Hanya orang yang diizinkan untuk masuk ke dalam sistem dan memiliki izin akses saja yang dapat mengakses fitur tertentu.
+
+# Apa itu cookies dan bagaimana menggunakan cookies untuk mengelola data sesi pengguna
+cookies adalah kumpulan data (rekam jejak digital dan aktivitas) yang diterima komputer dari sebuah situs dan mengirimkan kembali ke situs yang dikunjungi.
+
+Cara cookies mengelola data sesi pengguna adalah dengan menyimpan informasi login misalnya yang disimpan adalah session id, saat pengguna login cookies ini akan dikirimkan ke browser lalu server(Django) akan membaca cookies yang telah dikirimkan sebelumnya sehingga server(Django) tahu sesi dari pengguna dan data sesi akan disimpan sampai kurun waktu tertentu, kemudian cookies juga dapat diperbarui untuk menyimpan data sesi pengguna terbaru. Saat sesi berakhir data sesi pada cookies juga dapat dihapus.
+
+# Keamanan penggunaan cookies secara default
+Dalam kondisi normal/default cookies aman, cookies tidak bisa mentransfer malware atau virus karena data yang dibawa cookies tidak berubah ketika berpindah dari komputer ke website dan sebaliknya.
+
+Namun tetap ada risiko potensial yang harus diwaspadai karena kita menggunakan cookies di internet dan internet dapat diakses oleh siapapun. Risikonya yaitu :
+1. Jika mengunjungi situs yang berbahaya data pada cookies bisa dicuri.
+2. Masalah privasi, karena adanya kemungkinan data pada cookies dicuri maka data yang bersifat privasi sebaiknya tidak disimpan di dalam cookies.
+3. Adanya risiko dari Web Application Threats seperti sql injection, XSS, CSRF, Cookie/Session poisoning dan lain-lain yang dapat merugikan pengguna karena dapat memanipulasi apapun termasuk cookies dan data sesi sehingga peretas dapat melakukan akses yang tidak dikehendaki oleh pengguna.
+
+# Cara mengimplementasi checklist tugas 4 secara step by step
+
+# Mengimplementasikan fungsi registrasi, login, dan logout
+1. Pada views.py pada subdirektori buat 3 fungsi registrasi, login_user, dan logout_user serta import yang dibutuhkan oleh fungsi tersebut. untuk registrasi import redirect, UserCreationForm, dan messages; untuk login_user import authenticate dan login; dan untuk logout_user import logout.
+2. Buat konfigurasi HTML dari 3 fungsi tersebut pada folder main/templates. Untuk register buat register.html beserta isi kode html nya, untuk login_user buat 
+login.html beserta isi kode html nya, dan untuk logout tambahkan kode html untuk logout pada main.html
+3. Pada urls.py di subdirektori main import ke 3 fungsi tersebut dan tambahkan ke dalam urlpatterns
+
+# Membuat dua akun pengguna dengan masing-masing tiga dummy data
+1. Jalankan server kemudian tekan tombol register untuk membuat dua akun.
+2. Setelah login tambahkan 3 dummy data dengan menekan tombol Add New Product, tetapi saat ini data kedua akun masih sama, karena setiap akun masih terhubung pada data yang sama. Agar dapat membuat masing-masing 3 dummy data yang berbeda harus melakukan tahap berikutnya terlebih dahulu.
+
+# Menghubungkan model Item dengan User
+1. Pada models.py di subdirektori main impor model dengan from django.contrib.auth.models import User
+2. Pada Class Product tambahkan user = models.ForeignKey(User, on_delete=models.CASCADE) untuk menghubungkan satu produk/item dengan satu user melalui sebuah relationship, dimana sebuah produk pasti terasosiasikan dengan seorang user.
+3. Pada views.py sesuaikan fungsi create_product seperti berikut
+def create_product(request):
+ form = ProductForm(request.POST or None)
+
+ if form.is_valid() and request.method == "POST":
+     product = form.save(commit=False)
+     product.user = request.user
+     product.save()
+     return HttpResponseRedirect(reverse('main:show_main'))
+     ...
+...
+
+4. Agar data tiap user tidak sama dan memiliki integrasi antara data dan user sendiri. Sesuaikan fungsi show_main seperti berikut
+def show_main(request):
+    products = Product.objects.filter(user=request.user)
+
+    context = {
+        'name': request.user.username,
+        ...
+...
+5. Simpan semua perubahan dan lakukan migrasi model. python manage.py makemigrations untuk menyimpan perubahan pada model dan python manage.py migrate untuk mengaplikasi perubahan
+
+# Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+1. Pada main.html pada subdirektori main tambahkan <h5>Sesi terakhir login: {{ last_login }}</h5> untuk menampilkan last login 
+2. tambahkan <h5>Username: {{ request.user.username }}</h5> untuk detail informasi pengguna yang sedang logged in seperti username.
+
+
+
+
+
