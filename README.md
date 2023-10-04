@@ -376,6 +376,8 @@ dan lain-lain.
 5. Kemudian untuk daftar item/inventory saya menggunakan card dengan cara membungkus inventory pada main.html di direktori main dengan <div> tag yang diberi nama class card.
 6. Dan class card tersebut diatur dengan bootstrap dan CSS dengan <style> tag 
 
+# Bonus tugas 5 PBP
+<img width="382" alt="Bonus tugas 5 PBP" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/883fea26-37fa-47fe-b214-d0acbf65dce7">
 
 
 
