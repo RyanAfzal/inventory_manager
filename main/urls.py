@@ -7,7 +7,9 @@ from main.views import show_main, create_product, show_xml, show_json, show_xml_
 from main.views import register
 from main.views import login_user
 from main.views import logout_user
-from main.views import add_stock, reduce_stock, delete_product
+#Tugas 4 (Bonus) : from main.views import add_stock, reduce_stock, delete_product
+from main.views import edit_product
+from main.views import delete_product
 
 app_name = 'main'
 
@@ -21,7 +23,10 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
-    path('add-stock/<int:id>/', add_stock, name='add_stock'),
-    path('reduce-stock/<int:id>/', reduce_stock, name='reduce_stock'),
-    path('delete-product/<int:id>/', delete_product, name='delete_product'),
+    path('edit-product/<int:id>', edit_product, name='edit_product'),
+    path('delete/<int:id>', delete_product, name='delete_product'),
+    #Tugas 4 (Bonus)
+    #path('add-stock/<int:id>/', add_stock, name='add_stock'),
+    #path('reduce-stock/<int:id>/', reduce_stock, name='reduce_stock'),
+    #path('delete-product/<int:id>/', delete_product, name='delete_product'),
 ]

@@ -281,6 +281,99 @@ def show_main(request):
 1. Pada main.html pada subdirektori main tambahkan <h5>Sesi terakhir login: {{ last_login }}</h5> untuk menampilkan last login 
 2. tambahkan <h5>Username: {{ request.user.username }}</h5> untuk detail informasi pengguna yang sedang logged in seperti username.
 
+**PBP tugas 5**
+
+# CSS element selector dan elemen selektor pada CSS secara umum
+CSS selector adalah salah satu rangkaian aturan dari CSS yang memiliki fungsi untuk memilih suatu elemen yang ingin dibergi gaya atau tampilan tergantung pada aturan pencocokan pola. Selector terdiri dari beberapa jenis yang memiliki beberapa manfaat, yaitu :
+
+1. Universal Selector (*)
+    Manfaat: untuk memilih semua elemen di halaman web. Dapat digunakan untuk mengatur tampilan default setiap elemen.
+
+2. Element Selector (Tag Selector)
+
+    Manfaat: untuk memilih semua elemen yang sesuai dengan nama tag HTML tertentu. Dapat digunakan untuk mengatur tampilan atau gaya elemen tertentu.
+
+3. Class Selector (.classname)
+
+    Manfaat: untuk memilih elemen berdasarkan nama kelas CSS yang dipilih. Dapat digunakan untuk memberi gaya beberapa elemen yang memiliki kelas yang sama.
+
+4. ID Selector (#idname)
+
+    Manfaat: untuk memilih elemen berdasarkan atribut id yang unik. Dapat digunakan untuk memberi gaya elemen yang harus tampil dengan gaya unik, dan setiap ID harus unik dalam satu halaman.
+
+# HTML5 Tag
+Tag adalah sebuah penanda awalan dan akhiran dari sebuah elemen di HTML5. HTML5 adalah versi terbaru dari bahasa markup HTML yang digunakan untuk membuat halaman web. Berikut beberapa contoh HTML5 Tag:
+1. `<html>` : untuk memulai dokumen html
+2. `<head>` : Bagian kepala dokumen yang berisi informasi seperti judul halaman, meta tag, dan tautan ke berkas CSS
+3. `<body>` : Bagian utama halaman web yang berisi konten yang akan ditampilkan kepada pengguna.
+4. `<a>` : Membuat tautan hyperlink ke halaman web lain atau berkas lain.
+5. `<h1>` sampai `<h6>` : Digunakan untuk menandai judul atau heading dengan tingkat kepentingan yang berbeda.
+dan lain-lain.
+
+# Perbedaan Padding dan Margin
+1. Margin
+- Pengertian : ruang di luar elemen HTML. Ini adalah jarak antara elemen tersebut dan elemen-elemen lain di sekitarnya atau elemen lain di luar kontainer jika itu elemen terluar.
+- Fungsi :  untuk mengontrol jarak antara elemen dengan elemen-elemen di luarnya.
+- Margin bersifat transparan; elemen di bawahnya bisa terlihat melalui margin.
+
+2. Padding 
+- Pengertian : jarak antara elemen dan konten elemen itu sendiri (biasanya tepi elemen)
+- Fungsi :  untuk mengontrol jarak antara konten elemen dan batas (border) elemen tersebut.
+- Padding tidak bersifat transparan
+
+# Perbedaan framework CSS tailwind dan bootstrap
+1. Perbedaan pada desain
+
+    - Bootstrap menawarkan set class CSS dan komponen yang telah dirancang sebelumnya dengan tampilan yang cukup terstruktur dan konsisten. Ini cocok untuk proyek dengan desain tradisional yang membutuhkan kerangka kerja yang stabil dan mudah digunakan.
+
+    - Tailwind menganut pendekatan yang lebih "utility-first", di mana kita membangun antarmuka dengan menggabungkan class utilitas yang lebih kecil. Ini memberikan kebebasan kreatif yang lebih besar dan memungkinkan penggunaan class yang sangat spesifik.
+
+2. Perbedaan secara fleksibilitas
+
+    - Bootstrap menawarkan kerangka kerja yang relatif terstruktur dengan banyak komponen yang telah dirancang sebelumnya. Ini memberikan stabilitas dan kemudahan penggunaan, tetapi mungkin memiliki batasan dalam hal fleksibilitas desain yang unik.
+
+    - Tailwind memberikan fleksibilitas yang lebih besar dengan pendekatan "utility-first" yang memungkinkan kita membangun desain yang sangat kustom sesuai kebutuhan. kita memiliki kendali penuh atas gaya dan tata letak dengan kombinasi class utilitas yang spesifik.
+
+3. Perbedaan pada ukuran file
+
+    - Bootstrap adalah kerangka kerja yang lebih besar dalam hal ukuran file karena menyediakan banyak fitur dan komponen yang siap pakai. Ini mungkin berdampak pada kecepatan pengunduhan dan performa halaman web.
+
+    - Tailwind dirancang untuk lebih ringan dalam hal ukuran file. Namun, ketika kita menggunakan banyak class utilitas dalam kode, ukuran file CSS dapat meningkat.
+
+4. Perbedaan ekosistem pengembangan
+
+    - bootstrap memiliki ekosistem yang sangat kuat dengan dokumentasi yang kaya, banyak tema dan template yang tersedia, serta dukungan komunitas yang luas. Ini membuatnya mudah untuk memulai dan mendapatkan sumber daya yang diperlukan.
+
+    - Tailwind juga memiliki ekosistem yang berkembang pesat dengan dokumentasi yang baik dan komunitas yang aktif, kita dapat menemukan banyak sumber daya, plugin, dan integrasi dengan kerangka kerja JavaScript seperti React atau Vue.
+
+5. Perbedaan keutamaan
+    - bootstrap menyediakan template dan kelas CSS untuk komponen umum yang dapat menyesuaikan tampilan dan menyediakan komponen siap pakai
+    - tailwind tidak menyediakan komponen siap pakai, tetapi harus menggunakan kelas utilitas yang disediakan oleh tailwind.
+
+- bootstrap sebaiknya digunakan jika ingin membangun web secara cepat walaupun pengaksesan web lebih lambat karena ukuran file bootstrap yang lebih besar daripada tailwind, ketika tidak ingin memberi banyak perubahan/custom pada design karena bootstrap sudah memiliki styling, dan ingin menggunakan komponen UI yang sudah ada
+
+- tailwind sebaiknya digunakan ketika ingin membangun web yang memerlukan banyak penyesuaian, kustomisasi, dan tampilan yang unik dan spesifik.
+
+# Cara mengimplementasi checklist tugas 5 secara step by step
+1. Saya melakukan kustomisasi halaman login, register, dan tambah inventori dengan cara menyatukan yang ingin diubah dengan <div> tag.
+2. Lalu lakukan kustomisasi dengan <style> tag yang berisi aturan tampilan dari <div> tag yang dipilih, contoh untuk kustomisasi login.html :
+ body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(red, blue);
+    }
+3. Saya juga menggunakan boostrap untuk melakukan kustomisasi contoh penerapan pada kode saya: <div class="d-flex justify-content-center">
+4. Untuk kustomisasi register saya membuat custom UserCreationForm sebagai class baru pada forms.py di direktori main dan digunakan di fungsi register pada views.py pada direktori main
+5. Kemudian untuk daftar item/inventory saya menggunakan card dengan cara membungkus inventory pada main.html di direktori main dengan <div> tag yang diberi nama class card.
+6. Dan class card tersebut diatur dengan bootstrap dan CSS dengan <style> tag 
+
+
+
+
+
 
 
 

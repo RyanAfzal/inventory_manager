@@ -1,63 +1,78 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    /* Custom CSS to control card width and height */
+    .custom-card {
+        width: 400px;
+        height: 170px;
+    }
+
+    .button{
+        margin-top: 10px;
+    }
+
+</style>
+
+<div class="MainInventory">
     <h1>Inventory Manager Page</h1>
 
-    <h5>Name: </h5>
-    <p>{{ name }}<p>
-    <h5>Class: </h5>
-    <p>{{ class }}<p> 
+    <br>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Description</th>
-        </tr>
-    
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    
-        {% for product in products %}
-            <tr>
-                <td>{{product.name}}</td>
-                <td>{{product.amount}}</td>
-                <td>{{product.description}}</td>
-                <td>
-                    <form method="post" action="{% url 'main:add_stock' product.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Tambah</button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="{% url 'main:reduce_stock' product.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Kurang</button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="{% url 'main:delete_product' product.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-        {% endfor %}
-
-    </table>
-    
-    <br />
-    
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Product
+    <nav class="navbar bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <span class="navbar-brand">Navbar   {{name}}</span>
+            <div class="d-flex justify-content-end"></div>
             <a href="{% url 'main:logout' %}">
                 <button>
                     Logout
                 </button>
             </a>
-        </button>
-    </a>
+        </div>
+    </nav>
+
+    <br>
+
+    <h5>Name: </h5>
+    <p>{{ name }}<p>
+    <h5>Class: </h5>
+    <p>{{ class }}<p>
+
+    <div class="text-center">
+        <a href="{% url 'main:create_product' %}">
+            <button>
+                Add New Product
+            </button>
+        </a>
+    </div>
+
+    <br>
     
+    <div class="d-flex justify-content-center">
+        <div class="card-deck">  <!-- Wrap card elements in a card-deck for better layout -->
+            {% for product in products %}
+            <div class="card">
+                <div class="card custom-card mx-auto">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">Amount: {{ product.amount }}</p>
+                    <p class="card-text">Description: {{ product.description }}</p>
+                    <div class="button">
+                        <a href="{% url 'main:edit_product' product.pk %}" class="btn btn-primary">
+                            Edit
+                        </a>
+                        <a href="{% url 'main:delete_product' product.pk %}" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br />
+
     <h5>Username: {{ request.user.username }}</h5>
     <h5>Sesi terakhir login: {{ last_login }}</h5>
+</div>
 {% endblock content %}
