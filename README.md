@@ -252,6 +252,12 @@ login.html beserta isi kode html nya, dan untuk logout tambahkan kode html untuk
 1. Jalankan server kemudian tekan tombol register untuk membuat dua akun.
 2. Setelah login tambahkan 3 dummy data dengan menekan tombol Add New Product, tetapi saat ini data kedua akun masih sama, karena setiap akun masih terhubung pada data yang sama. Agar dapat membuat masing-masing 3 dummy data yang berbeda harus melakukan tahap berikutnya terlebih dahulu.
 
+akun 1
+<img width="356" alt="Screenshot akun 1 tugas PBP" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/15b204c7-1b73-4dc2-a394-da1077751598">
+
+akun 2
+<img width="397" alt="Screenshot akun 2 tugas PBP" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/0b1e6196-7517-4dd3-9de5-ac44e3a221a8">
+
 # Menghubungkan model Item dengan User
 1. Pada models.py di subdirektori main impor model dengan from django.contrib.auth.models import User
 2. Pada Class Product tambahkan user = models.ForeignKey(User, on_delete=models.CASCADE) untuk menghubungkan satu produk/item dengan satu user melalui sebuah relationship, dimana sebuah produk pasti terasosiasikan dengan seorang user.
