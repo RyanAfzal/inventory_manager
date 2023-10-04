@@ -2,14 +2,18 @@
 
 {% block content %}
 <style>
-    /* Custom CSS to control card width and height */
     .custom-card {
         width: 400px;
         height: 170px;
+        background-color: white;  
     }
 
     .button{
         margin-top: 10px;
+    }
+
+    .last-card {
+        background-color: red;  
     }
 
 </style>
@@ -51,7 +55,7 @@
     <div class="d-flex justify-content-center">
         <div class="card-deck">  <!-- Wrap card elements in a card-deck for better layout -->
             {% for product in products %}
-            <div class="card">
+            <div class="card {% if forloop.last %}last-card{% endif %}">
                 <div class="card custom-card mx-auto">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">Amount: {{ product.amount }}</p>
