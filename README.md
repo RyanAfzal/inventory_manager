@@ -379,6 +379,182 @@ dan lain-lain.
 # Bonus tugas 5 PBP
 <img width="382" alt="Bonus tugas 5 PBP" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/883fea26-37fa-47fe-b214-d0acbf65dce7">
 
+**PBP tugas 5**
+
+# Perbedaan antara asynchronous programming dengan synchronous programming
+1. asynchronous programming bersifat multi-thread, artinya banyak operasi atau program dapat berjalan secara paralel, sedangkan synchronous programming bersifat single-thread, artinya hanya 1 operasi yang dapat berjalan pada waktu yang sama
+2. asynchronous programming bersifat non-blocking, artinya mengirim banyak request ke server, sedangkan synchronous programming bersifat blocking, artinya hanya 1 request yang dikirim ke server pada waktu yang sama dan menunggu request tersebut dijawab oleh server
+3. asynchronous programming throughput nya lebih banyak dari synchronous programming, sedangkan synchronous programming lebih lambat
+
+
+# Paradigma event-driven programming pada penerapan Javascript dan Ajax
+pengertian event-driven programming adalah paradigma programming yang mengatur dan membuat alur code terstruktur berdasarkan event yang terjadi atau merespons event bukan alur code dari atas ke bawah seperti biasanya, event ini berasal dari sumber external seperti input user dan perubahan sistem.
+
+Contoh penerapannya pada tugas ini:
+1. Asynchronous Function: Dalam JavaScript, ada dua fungsi yang digunakan dengan kata kunci async: getProducts dan addProduct. Fungsi ini adalah asinkron, yang berarti mereka dapat menjalankan operasi jaringan seperti pengambilan data atau pengiriman data tanpa menghalangi eksekusi program utama.
+
+2. Event Listeners/Handlers: Kode JavaScript juga menggunakan event listeners. Sebagai contoh, document.getElementById("button_add").onclick = addProduct adalah event listener yang menunggu klik pada elemen HTML dengan ID "button_add" dan akan memanggil fungsi addProduct saat tombol tersebut diklik. Event listeners adalah dasar dari pemrograman berbasis peristiwa.
+
+3. Fetch API: fetch digunakan untuk mengambil data dari URL. Ini adalah contoh tipikal dari operasi asinkron yang melibatkan jaringan dalam pemrograman berbasis peristiwa.
+
+4. Manipulasi DOM: Kode JavaScript mengambil elemen-elemen HTML dengan document.getElementById dan mengubah isi atau struktur HTML dengan innerHTML. Ini adalah bagian dari manipulasi Document Object Model (DOM), yang merupakan salah satu aspek utama dalam pemrograman berbasis peristiwa.
+
+# Penerapan asynchronous programming pada AJAX.
+penerapan asyncrhonous programming pada ajax biasanya dengan XMLHttpRequest, dengan cara membuat object XMLHttpRequest terlebih dahulu, lalu menentukan apa yang akan dilakukan saat request ke server selesai, kemudian mengirim request ke server, terakhir Aksi akan dipicu oleh JavaScript sesuai dengan yang dibuat.
+
+atau bisa juga menggunakan Fetch API karena Fetch API dapat melakukan semua yang dilakukan oleh XMLHttpRequest (XHR) object. Contohnya:
+
+```async function getProducts() {
+    return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+}
+```
+
+# Perbandingan Fetch API dan library jquery
+1. ukuran jquery lebih besar daripada Fetch API. Karena jquery adalah library yang memiliki banyak fitur lain yang mungkin tidak diperlukan dalam proyek tertentu sehingga ukuran lebih besar, sedangkan Fetch API hanya menyediakan fungsionalitas dasar untuk mengambil dan mengirim data.
+
+2. Fetch API: Fetch API menggunakan Promise, yang merupakan teknik asynchronous modern yang membuat kode lebih mudah dibaca dan dikelola, terutama ketika Anda harus menangani banyak permintaan data secara bersamaan. Sedangkan jQuery: jQuery menggunakan pendekatan callback yang lebih tua untuk menangani permintaan AJAX. Ini dapat menghasilkan kode yang lebih sulit dibaca dan memahami jika ada banyak permintaan bersarang.
+
+3. Fetch API Cenderung lebih cepat dalam penggunaan yang tepat, sedangkan jquery Mungkin memiliki overhead tambahan dan sedikit lebih lambat dalam beberapa kasus
+
+4. Fetch API memberikan fleksibilitas yang tinggi kepada pengembang untuk membangun fitur tambahan sesuai kebutuhan. Anda dapat mengontrol dengan detail bagaimana permintaan dan respons dielaborasi, termasuk header, jenis konten, metode permintaan, dan banyak hal lainnya, serta lebih modular. Sedangkan jquery terbatas pada fitur ajax dan jQuery cocok untuk proyek-proyek yang membutuhkan manipulasi DOM yang kuat dan berbagai efek visual, tetapi mungkin tidak sesuai jika Anda memerlukan kendali yang lebih besar atas permintaan dan respons HTTP.
+
+Karena pada tugas ini membutuhkan yang lebih cepat dan lebih fleksibel maka dipilih Fetch API.
+
+# Cara mengimplementasi checklist tugas 6 secara step by step
+1. Buat fungsi get_product_json pada views.py untuk mengambil data product dalam format JSON seperti berikut:
+``` shell
+def get_product_json(request):
+    product_item = Product.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+```
+
+2. Mengubah code cards agar dapat mendukung ajax get seperti berikut pada main.html:
+``` shell
+async function refreshProducts() {
+            document.getElementById("product_table").innerHTML = "";
+            const products = await getProducts();
+            
+            let htmlString = '<div class="card-deck">'
+
+            products.forEach((item, index) => {
+                let cardClass = "card";
+                if (index === products.length - 1) {
+                    cardClass += " last-card"
+                }
+                htmlString += `
+                    <div class="${cardClass}">
+                        <div class="card-body">
+                            <h5 class="card-title">${item.fields.name}</h5>
+                            <p class="card-text">Amount: ${item.fields.amount}</p>
+                            <p class="card-text">Description: ${item.fields.description}</p>
+                            <div class="button">
+                                <a href="edit-product/${item.pk}" class="btn btn-primary">
+                                    Edit
+                                </a>
+                                <a href="delete/${item.pk}" class="btn btn-danger">
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>`
+            })
+            htmlString += '</div>'
+            document.getElementById("product_table").innerHTML = htmlString;
+        }
+
+        refreshProducts();
+```
+
+3. Membuat tombol modal sebagai form untuk menambahkan item, dengan cara pada main.html tambahkan kode berikut
+``` shell
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+``` 
+
+Dan untuk tombol nya
+``` shell
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+```
+
+4. Membuat ajax post untuk menambahkan item, dengan menambahkan fungsi berikut pada views.py
+``` shell
+@csrf_exempt
+def add_product_ajax(request):
+if request.method == 'POST':
+    name = request.POST.get("name")
+    price = request.POST.get("price")
+    description = request.POST.get("description")
+    user = request.user
+
+    new_product = Product(name=name, price=price, description=description, user=user)
+    new_product.save()
+
+    return HttpResponse(b"CREATED", status=201)
+
+return HttpResponseNotFound()
+```
+
+5. seperti biasa fungsi yang dibuat tambahkan ke urlspatterns pada urls.py dan tidak lupa untuk import fungsi tersebut, contoh :
+``` shell
+
+    path('get-product/', get_product_json, name='get_product_json'),
+    path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
+```
+6. Buat fungsi JavaScript untuk menambahkan item
+di dalam tag `<script></script>` tambahkan 
+``` shell
+
+function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+document.getElementById("button_add").onclick = addProduct
+```
+
+7. Jalankan perintah
+```
+python manage.py collectstatic
+```
+
+
+
+
 
 
 
