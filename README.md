@@ -1,4 +1,4 @@
-![image](https://github.com/RyanAfzal/inventory_manager/assets/137851158/75c9eec7-8289-4b6c-84bd-6d798e2ea186)Nama    : Ryandhika Al Afzal
+Nama    : Ryandhika Al Afzal
 
 NPM     : 2206081502
 
