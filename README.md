@@ -6,7 +6,7 @@ Kelas   : PBP A
 
 Links Adaptable : https://inventorymanager.adaptable.app/main
 
-**PBP tugas 2**
+# PBP tugas 2
 
 # Step-step memenuhi kriteria aplikasi
 
@@ -133,7 +133,7 @@ ciri : tidak ada pemisahan controller, karena template untuk interface maka temp
 
 Ciri : menjadi media antara Model dan View, menangani input user, dan menangani data yang akan ditampilkan
 
-**PBP tugas 3**
+# PBP tugas 3
 
 # Perbedaan get dan post
 
@@ -202,7 +202,7 @@ HTML (Hyper Text Markup Language)
 <img width="646" alt="SS Json ID" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/be8761d0-1a71-45f1-b7b8-53639f6ccd80">
 
 
-**PBP tugas 4**
+# PBP tugas 4
 
 # UserCreationForm
 UserCreationForm adalah impor formulir bawaan yang memudahkan pembuatan formulir pendaftaran pengguna dalam aplikasi web. 
@@ -287,7 +287,7 @@ def show_main(request):
 1. Pada main.html pada subdirektori main tambahkan <h5>Sesi terakhir login: {{ last_login }}</h5> untuk menampilkan last login 
 2. tambahkan <h5>Username: {{ request.user.username }}</h5> untuk detail informasi pengguna yang sedang logged in seperti username.
 
-**PBP tugas 5**
+# PBP tugas 5
 
 # CSS element selector dan elemen selektor pada CSS secara umum
 CSS selector adalah salah satu rangkaian aturan dari CSS yang memiliki fungsi untuk memilih suatu elemen yang ingin dibergi gaya atau tampilan tergantung pada aturan pencocokan pola. Selector terdiri dari beberapa jenis yang memiliki beberapa manfaat, yaitu :
@@ -379,7 +379,7 @@ dan lain-lain.
 # Bonus tugas 5 PBP
 <img width="382" alt="Bonus tugas 5 PBP" src="https://github.com/RyanAfzal/inventory_manager/assets/137851158/883fea26-37fa-47fe-b214-d0acbf65dce7">
 
-**PBP tugas 5**
+# PBP tugas 6
 
 # Perbedaan antara asynchronous programming dengan synchronous programming
 1. asynchronous programming bersifat multi-thread, artinya banyak operasi atau program dapat berjalan secara paralel, sedangkan synchronous programming bersifat single-thread, artinya hanya 1 operasi yang dapat berjalan pada waktu yang sama
