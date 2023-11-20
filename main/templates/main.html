@@ -152,7 +152,7 @@
                                 </a>
                                 <a href="delete/${item.pk}" class="btn btn-danger">
                                     Delete
-                                </a>
+                                </a> 
                             </div>
                         </div>
                     </div>`
@@ -162,7 +162,6 @@
         }
 
         refreshProducts();
-
     
         function addProduct() {
             fetch("{% url 'main:add_product_ajax' %}", {
